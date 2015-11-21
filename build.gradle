@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext.deps = [
+        scalaVersion        : '2.11.1',
+        commonsLang3Version : '3.4',
+        slf4jVersion        : '1.7.12',
+        grizzledSlf4jVersion: '1.0.2',
+        wgetVersion         : '1.2.12',
+        junitVersion        : '4.12',
+        scalaTestVersion    : '3.0.0-M9',
+        rxScalaVersion      : '0.25.0',
+        okHttpVersion       : '2.5.0'
+]
+
+
+dependencies {
+    compile "org.scala-lang:scala-library:$deps.scalaVersion"
+    compile "com.github.axet:wget:$deps.wgetVersion"
+    compile "org.apache.commons:commons-lang3:$deps.commonsLang3Version"
+    compile "org.clapper:grizzled-slf4j_2.11:$deps.grizzledSlf4jVersion"
+    compile "org.slf4j:slf4j-simple:$deps.slf4jVersion"
+    compile "io.reactivex:rxscala_2.11:$deps.rxScalaVersion"
+    compile "com.squareup.okhttp:okhttp:$deps.okHttpVersion"
+
+    testCompile "org.scalatest:scalatest_2.11:$deps.scalaTestVersion"
+    testCompile "junit:junit:$deps.junitVersion"
+
+}
